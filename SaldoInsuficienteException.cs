@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _01_ByteBank
 {
-    public class SaldoInsuficienteException : Exception
+    public class SaldoInsuficienteException : OperacaoFinanceiraException
     {
         public double Saldo { get; }
         public double ValorSaque { get; }
@@ -20,6 +20,11 @@ namespace _01_ByteBank
             ValorSaque = valorSaque;
         }
         public SaldoInsuficienteException(string message) : base(message)
+        {
+
+        }
+
+        public SaldoInsuficienteException(string mensagem, Exception exception) : base(mensagem,exception)
         {
 
         }

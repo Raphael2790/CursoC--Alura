@@ -15,6 +15,7 @@ namespace _01_ByteBank
             
 
             ContaCorrente contaRaphael = new ContaCorrente(0296,806129);
+            ContaCorrente contaMonica = new ContaCorrente(0296, 864249);
 
             contaRaphael.Titular = new Cliente();
             contaRaphael.Titular.Nome = "Raphael";
@@ -32,16 +33,19 @@ namespace _01_ByteBank
 
             try
             {
-                contaRaphael.Sacar(-20000);
+                contaRaphael.Tranferir(20000, contaMonica);
             }
             catch(DivideByZeroException e)
             {
                 Console.WriteLine("Aconteceu o erro " + e.Message);
             }
-            catch(SaldoInsuficienteException e)
+            catch(OperacaoFinanceiraException e)
             {
-                Console.WriteLine("O erro a seguir foi encontrado:");
+                Console.WriteLine(e.StackTrace);
                 Console.WriteLine(e.Message);
+                Console.WriteLine("INNEREXCEPTION:");
+                Console.WriteLine(e.InnerException.Message);
+                Console.WriteLine(e.InnerException.StackTrace);
             }
             catch(ArgumentException e)
             {
