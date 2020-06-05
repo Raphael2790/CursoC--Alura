@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Modelos
 {
+    /// <summary>
+    /// Está classe é responsavél pela criar Contas no ByteBank
+    /// </summary>
     public class ContaCorrente
     {
         private static int TaxaOperacao;
@@ -38,6 +41,12 @@ namespace ByteBank.Modelos
             }
         }
 
+        /// <summary>
+        /// Este metodo é o construtor das Contas Corrente
+        /// </summary>
+        /// <exception cref="ArgumentException">Exceção para o valor <paramref name="agencia"/> e <paramref name="numero"/> deve ser maior que 0</exception>
+        /// <param name="agencia">Responsavel por implementar a propriedade <see cref="Agencia"/></param>
+        /// <param name="numero">Responsável por implementar a propriedade <see cref="Numero"/></param>
         public ContaCorrente(int agencia, int numero)
         {
             if (numero <= 0)
