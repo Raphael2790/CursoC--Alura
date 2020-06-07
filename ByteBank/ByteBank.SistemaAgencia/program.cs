@@ -16,6 +16,16 @@ namespace ByteBank.SistemaAgencia
             DateTime datalimite = new DateTime(2020, 06, 20);
             DateTime datahoje = DateTime.Now;
 
+            string url = "page?nome=Raphael&idade=29&salario=1500";
+
+            string arguments = url.Substring(5);
+
+            VerficarSepararArgumentos extrator = new VerficarSepararArgumentos(url);
+
+            Console.WriteLine(extrator.GetValor("SALARIO"));
+
+            Console.WriteLine(arguments);
+
             Console.WriteLine(datalimite);
             Console.WriteLine(datahoje);
 
