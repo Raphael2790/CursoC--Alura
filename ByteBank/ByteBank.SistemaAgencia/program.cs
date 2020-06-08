@@ -56,6 +56,12 @@ namespace ByteBank.SistemaAgencia
 
             Console.WriteLine(match.Value);
 
+            Cliente cliente = new Cliente();
+            cliente.CPF = "401.919.868-36";
+            Cliente cliente1 = new Cliente();
+            cliente1.CPF = "401.919.868-36";
+            Console.WriteLine(cliente.Equals(cliente1));
+
         }
 
         public static string FormateMessage(TimeSpan timespan)
