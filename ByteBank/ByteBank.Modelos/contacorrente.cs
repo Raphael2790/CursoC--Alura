@@ -9,7 +9,7 @@ namespace ByteBank.Modelos
     /// <summary>
     /// Está classe é responsavél pela criar Contas no ByteBank
     /// </summary>
-    public class ContaCorrente
+    public class T
     {
         private static int TaxaOperacao;
 
@@ -47,7 +47,7 @@ namespace ByteBank.Modelos
         /// <exception cref="ArgumentException">Exceção para o valor <paramref name="agencia"/> e <paramref name="numero"/> deve ser maior que 0</exception>
         /// <param name="agencia">Responsavel por implementar a propriedade <see cref="Agencia"/></param>
         /// <param name="numero">Responsável por implementar a propriedade <see cref="Numero"/></param>
-        public ContaCorrente(int agencia, int numero)
+        public T(int agencia, int numero)
         {
             if (numero <= 0)
             {
@@ -87,7 +87,7 @@ namespace ByteBank.Modelos
             _saldo += valor;
         }
 
-        public void Transferir(double valor, ContaCorrente contaDestino)
+        public void Transferir(double valor, T contaDestino)
         {
             if (valor < 0)
             {
@@ -110,6 +110,17 @@ namespace ByteBank.Modelos
         public override string ToString()
         {
             return $"Sua agencia {Agencia}, sua conta {Numero} e seu saldo é {Saldo}";
+        }
+        public override bool Equals(object obj)
+        {
+            T outraConta = obj as T;
+
+            if(outraConta == null)
+            {
+                return false;
+            }
+
+            return outraConta.Numero == Numero && outraConta.Agencia == Agencia;
         }
     }
 
