@@ -7,7 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByteBank.SistemaAgencia", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByteBank.Modelos", "ByteBank.Modelos\ByteBank.Modelos.csproj", "{C2175F0D-7024-465E-947F-C0FB51887A9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrabalhandoComColeções", "TrabalhandoComColeções\TrabalhandoComColeções.csproj", "{67A472E8-91BE-4BCC-A6D2-A0412F38A348}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrabalhandoComColeções", "TrabalhandoComColeções\TrabalhandoComColeções.csproj", "{67A472E8-91BE-4BCC-A6D2-A0412F38A348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByteBankImportacaoExportacao", "ByteBankImportacaoExportacao\ByteBankImportacaoExportacao.csproj", "{206F58C3-3D6D-4EF9-AC88-E751970D4F14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3752E347-F018-4D06-AF8F-7C8569A26827}"
+	ProjectSection(SolutionItems) = preProject
+		contas.txt = contas.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{67A472E8-91BE-4BCC-A6D2-A0412F38A348}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67A472E8-91BE-4BCC-A6D2-A0412F38A348}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67A472E8-91BE-4BCC-A6D2-A0412F38A348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206F58C3-3D6D-4EF9-AC88-E751970D4F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206F58C3-3D6D-4EF9-AC88-E751970D4F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206F58C3-3D6D-4EF9-AC88-E751970D4F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206F58C3-3D6D-4EF9-AC88-E751970D4F14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
