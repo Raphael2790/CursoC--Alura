@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Humanizer;
 using System.Text.RegularExpressions;
+using ByteBank.SistemaAgencia.Comparadores;
 
 namespace ByteBank.SistemaAgencia
 {
@@ -15,44 +16,73 @@ namespace ByteBank.SistemaAgencia
         static void Main(string[] args)
         {
             // Subescrevendo o metodo ToString da Conta corrente
-            T conta = new T(0296, 806129);
-            string contaToString = conta.ToString();
+            var conta = new ContaCorrente(0296, 806129);
+            var contaToString = conta.ToString();
             Console.WriteLine(contaToString);
 
             // Declaração e inicialização de arrays
-            T[] contas = new T[3];
-            contas[0] = new T(0296, 806129);
-            contas[1] = new T(0296, 808064);
-            contas[2] = new T(3057, 545285);
+            ContaCorrente[] contas = new ContaCorrente[3];
+            contas[0] = new ContaCorrente(0296, 806129);
+            contas[1] = new ContaCorrente(0296, 808064);
+            contas[2] = new ContaCorrente(3057, 545285);
 
-            T[] contas2 = new T[]
+            ContaCorrente[] contas2 = new ContaCorrente[]
             {
 
             };
 
-            for(int indice = 0; indice < contas.Length; indice++)
+            for (int indice = 0; indice < contas.Length; indice++)
             {
-                T contaAtual = contas[indice];
+                ContaCorrente contaAtual = contas[indice];
                 Console.WriteLine($"A conta no indice {indice} é {contaAtual.Numero}");
             }
 
-            T contaRaphael = new T(0000, 1111111);
+            ContaCorrente contaRaphael = new ContaCorrente(0000, 1111111);
 
-            ListaContaCorrente lista = new ListaContaCorrente();
+            var lista = new ListaContaCorrente();
             lista.Adicionar(contaRaphael);
-            lista.Adicionar(new T(0296, 806129));
-            lista.Adicionar(new T(3057, 521245)); 
-            lista.Adicionar(new T(0296, 806129));
-            lista.Adicionar(new T(3057, 521245));
-            lista.Adicionar(new T(0296, 806129));
-            lista.Adicionar(new T(3057, 521245)); 
-            lista.Adicionar(new T(0296, 806129));
-            lista.Adicionar(new T(3057, 521245));
+            lista.Adicionar(new ContaCorrente(0296, 806129));
+            lista.Adicionar(new ContaCorrente(3057, 521245));
+            lista.Adicionar(new ContaCorrente(0296, 806129));
+            lista.Adicionar(new ContaCorrente(3057, 521245));
+            lista.Adicionar(new ContaCorrente(0296, 806129));
+            lista.Adicionar(new ContaCorrente(3057, 521245)); 
+            lista.Adicionar(new ContaCorrente(0296, 806129));
+            lista.Adicionar(new ContaCorrente(3057, 521245));
 
             for (int i = 0; i < lista.Tamanho; i++)
             {
-                T conta1 = lista.GetItemNoIndice(i);
+                ContaCorrente conta1 = lista.GetItemNoIndice(i);
                 Console.WriteLine($"{conta1.Agencia}/{conta1.Numero}");
+            }
+
+            var lista2 = new List<string>()
+            {
+               "Raphael" ,
+               "Monica"
+            };
+
+
+            List<ContaCorrente> ContaCorrente = new List<ContaCorrente>()
+            {
+                new ContaCorrente(1296, 806129),
+                new ContaCorrente(3057,506472),
+                null,
+                new ContaCorrente(6052,254687),
+                new ContaCorrente(1547,555858),
+                null
+
+            };
+
+            //ContaCorrente.Sort(new ComparadorDeContaCorrente());
+
+            IOrderedEnumerable<ContaCorrente> contasOrdenadas = ContaCorrente
+                .Where(x => x != null)
+                .OrderBy(x => x.Numero);
+
+            foreach (var item in contasOrdenadas)
+            {
+                Console.WriteLine($"Conta corrente {item.Agencia}/{item.Numero}");
             }
 
             //Mostrando data atual e definindo uma data fixa

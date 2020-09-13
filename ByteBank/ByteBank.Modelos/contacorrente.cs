@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +11,7 @@ namespace ByteBank.Modelos
     /// <summary>
     /// Está classe é responsavél pela criar Contas no ByteBank
     /// </summary>
-    public class T
+    public class ContaCorrente : IComparable
     {
         private static int TaxaOperacao;
 
@@ -47,7 +49,7 @@ namespace ByteBank.Modelos
         /// <exception cref="ArgumentException">Exceção para o valor <paramref name="agencia"/> e <paramref name="numero"/> deve ser maior que 0</exception>
         /// <param name="agencia">Responsavel por implementar a propriedade <see cref="Agencia"/></param>
         /// <param name="numero">Responsável por implementar a propriedade <see cref="Numero"/></param>
-        public T(int agencia, int numero)
+        public ContaCorrente(int agencia, int numero)
         {
             if (numero <= 0)
             {
@@ -87,7 +89,7 @@ namespace ByteBank.Modelos
             _saldo += valor;
         }
 
-        public void Transferir(double valor, T contaDestino)
+        public void Transferir(double valor, ContaCorrente contaDestino)
         {
             if (valor < 0)
             {
@@ -113,7 +115,7 @@ namespace ByteBank.Modelos
         }
         public override bool Equals(object obj)
         {
-            T outraConta = obj as T;
+            var outraConta = obj as ContaCorrente;
 
             if(outraConta == null)
             {
@@ -121,6 +123,34 @@ namespace ByteBank.Modelos
             }
 
             return outraConta.Numero == Numero && outraConta.Agencia == Agencia;
+        }
+
+        public int CompareTo(object obj)
+        {
+            var outraConta = obj as ContaCorrente;
+
+            if(outraConta == null)
+            {
+                return -1;
+            }
+
+            if(Numero > outraConta.Numero)
+            {
+                return -1;
+            }
+            if(Numero == outraConta.Numero)
+            {
+                return 0;
+            }
+
+            return 1;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1221596495;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Cliente>.Default.GetHashCode(Titular);
+            return hashCode;
         }
     }
 

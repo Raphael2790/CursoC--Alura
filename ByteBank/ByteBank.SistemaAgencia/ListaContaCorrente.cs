@@ -10,7 +10,7 @@ namespace ByteBank.SistemaAgencia
 {
     class ListaContaCorrente
     {
-        private T[] _itens;
+        private ContaCorrente[] _itens;
         private int _proximaPosicao;
         public int Tamanho
         {
@@ -23,10 +23,10 @@ namespace ByteBank.SistemaAgencia
 
         public ListaContaCorrente(int capacidadeInicial = 5 )
         {
-            _itens = new T[capacidadeInicial];
+            _itens = new ContaCorrente[capacidadeInicial];
             _proximaPosicao = 0;
         }
-        public void Adicionar(T item)
+        public void Adicionar(ContaCorrente item)
         {
             VerificarCapacidade(_proximaPosicao + 1);
             _itens[_proximaPosicao] = item;
@@ -34,9 +34,9 @@ namespace ByteBank.SistemaAgencia
             _proximaPosicao++;
         }
 
-        public void AdicionarVarias( params T[] itens)
+        public void AdicionarVarias( params ContaCorrente[] itens)
         {
-            foreach ( T item in itens)
+            foreach ( ContaCorrente item in itens)
             {
                 Adicionar(item);
             }
@@ -46,17 +46,17 @@ namespace ByteBank.SistemaAgencia
         {
             for (int i = 0; i < _proximaPosicao; i++)
             {
-                T conta = _itens[i];
+                ContaCorrente conta = _itens[i];
                 Console.WriteLine($"A conta no indice{i} é a {conta.Agencia}/{conta.Numero}");
             }
         }
 
-        public void Remover(T item)
+        public void Remover(ContaCorrente item)
         {
             int indiceItem = -1;
             for (int i = 0; i < _proximaPosicao; i++)
             {
-                T contaAtual = _itens[i];
+                ContaCorrente contaAtual = _itens[i];
                 if (contaAtual.Equals(item))
                 {
                     indiceItem = i;
@@ -73,7 +73,7 @@ namespace ByteBank.SistemaAgencia
             _itens[_proximaPosicao] = null;
         }
 
-        public T GetItemNoIndice( int indice)
+        public ContaCorrente GetItemNoIndice( int indice)
         {
             if(indice < 0 || indice >= _proximaPosicao)
             {
@@ -96,7 +96,7 @@ namespace ByteBank.SistemaAgencia
                 novoTamanho = tamanhoNecessario;
             }
 
-            T[] novoArray = new T[novoTamanho];
+            ContaCorrente[] novoArray = new ContaCorrente[novoTamanho];
 
             Array.Copy(_itens, novoArray, _itens.Length);
 
