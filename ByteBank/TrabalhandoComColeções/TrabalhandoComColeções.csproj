@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ByteBank.Modelos\ByteBank.Modelos.csproj" />
+    <ProjectReference Include="..\ByteBank.SistemaAgencia\ByteBank.SistemaAgencia.csproj" />
+  </ItemGroup>
+
 </Project>

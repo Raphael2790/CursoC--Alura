@@ -12,6 +12,18 @@ namespace ByteBank.Modelos
         public string CPF { get; set; }
         public string Profissao { get; set; }
 
+        public Cliente()
+        {
+
+        }
+
+        public Cliente(string nome, string cPF, string profissao)
+        {
+            Nome = nome;
+            CPF = cPF;
+            Profissao = profissao;
+        }
+
         public override bool Equals(object obj)
         {
             Cliente outroCliente = obj as Cliente;
@@ -25,6 +37,12 @@ namespace ByteBank.Modelos
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"O nome do cliente é {Nome} e sua profissão é {Profissao}, a chave para ordenação é " +
+                $"o CPF do cliente";
         }
     }
 }
